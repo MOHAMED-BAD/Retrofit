@@ -35,10 +35,10 @@ public class MainActivity extends AppCompatActivity {
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .build();
         postClient=retrofit.create(PostClient.class);
-                //getPost();
-                //CreatePost();
+               // getPost();
+                CreatePost();
                 //UpdatePut();
-                UpdatePatch();
+                //UpdatePatch();
     }
 
      void getPost(){
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Post>>() {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
-                tv.setText(response.body().get(1).getBody()+"n"+response.body().get(1).getTitle()+"/n"+response.body().get(1).getBody());
+                tv.setText(response.body().get(1).getId() + "\n" + response.body().get(1).getUserId()+"\n"+response.body().get(1).getTitle()+"\n"+response.body().get(1).getBody());
             }
 
             @Override
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
-                tv.setText( response.body().getId()+"/n"+response.body().getUserId() + "/n" + response.body().getTitle() +"/n"+response.body().getBody());
+                tv.setText( response.body().getId()+"\n"+response.body().getUserId() + "\n" + response.body().getTitle() +"\n"+response.body().getBody());
             }
 
             @Override
@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
-                tv.setText( response.body().getId()+"/n"+response.body().getUserId() + "/n" + response.body().getTitle() +"/n"+response.body().getBody());
+                tv.setText( response.body().getId()+"\n"+response.body().getUserId() + "\n" + response.body().getTitle() +"\n"+response.body().getBody());
             }
 
             @Override
@@ -92,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<Post>() {
             @Override
             public void onResponse(Call<Post> call, Response<Post> response) {
-                tv.setText( response.body().getId()+"/n"+response.body().getUserId() + "/n" + response.body().getTitle() +"/n"+response.body().getBody());
+                tv.setText( response.body().getId()+"\n"+response.body().getUserId() + "\n" + response.body().getTitle() +"\n"+response.body().getBody());
             }
 
             @Override
