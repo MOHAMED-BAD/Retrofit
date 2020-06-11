@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
-                .client(okHttpClient)
+                .client(okHttpClient) //Must be Taken
                 .build();
         postClient=retrofit.create(PostClient.class);
                // getPost();
