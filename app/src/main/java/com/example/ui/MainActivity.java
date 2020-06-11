@@ -13,6 +13,8 @@ import com.google.gson.GsonBuilder;
 
 import java.util.List;
 
+import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -29,14 +31,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
          tv=findViewById(R.id.body);
          Gson gson=new GsonBuilder().serializeNulls().create();
+         HttpLoggingInterceptor loggingInterceptor=new HttpLoggingInterceptor();
+         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+         OkHttpClient okHttpClient=new OkHttpClient.Builder()
+                 .addInterceptor(loggingInterceptor)
+                 .build();
         //Builder
         retrofit = new Retrofit.Builder()
                 .baseUrl("https://jsonplaceholder.typicode.com/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
+                .client(okHttpClient)
                 .build();
         postClient=retrofit.create(PostClient.class);
                // getPost();
-                CreatePost();
+               CreatePost();
                 //UpdatePut();
                 //UpdatePatch();
     }
